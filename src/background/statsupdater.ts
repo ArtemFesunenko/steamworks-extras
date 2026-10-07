@@ -127,7 +127,8 @@ const fetchReviewsData = async (appID: string, queue: StorageActionsQueue) => {
 
     // We do not check for missing dates because reviews cannot be requested for certain dates.
     // We can request all reviews with couple requests in a single action
-    queue.addToQueue(new StorageActionRequestReviews(appID));
+    // Big games need many pages of reviews, so the default 20 seconds is not enough
+    queue.addToQueue(new StorageActionRequestReviews(appID, new StorageActionSettings({ executeTimeout: 300 })));
 }
 
 const fetchWishlistConversionsData = async (appID: string, queue: StorageActionsQueue) => {

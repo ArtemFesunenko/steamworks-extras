@@ -353,7 +353,7 @@ export const updateReviewsSummary = (doc: Document, reviews: ReviewsData) => {
 
     addReviewRow(
         'Positive reviews',
-        `${(positive / (positive + negative) * 100).toFixed(1)}%`,
+        positive + negative > 0 ? `${(positive / (positive + negative) * 100).toFixed(1)}%` : '---',
         ''
     );
 

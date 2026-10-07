@@ -69,7 +69,7 @@ export const createReviewsChart = (doc: Document, reviews: ReviewsData, dateRang
 }
 
 export const updateReviewsChart = (chart: Chart, reviewChartSplit: ReviewChartSplit, reviews: ReviewsData, dateRange: DateRange, chartColors: Record<string, string>) => {
-    if (reviews === undefined) return;
+    if (reviews === undefined || !Array.isArray(reviews.reviews)) return;
 
     const chartDays: string[] = [];
 
